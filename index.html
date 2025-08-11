@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Our 1st Anniversary ❤️ — A Love Across Miles</title>
+  <meta name="description" content="A little one-page anniversary website to celebrate your long-distance love." />
+
+  <!-- -------------
+    HOW TO USE
+    1) Save this file as `index.html`.
+    2) Put your photos (photo1.jpg .. photo6.jpg) and your-song.mp3 in the same folder.
+    3) Open index.html in a browser. Replace texts / dates / names below.
+    4) To change colors, edit the CSS variables in :root.
+  ------------- -->
+
+  <style>
+    /* --------- Theme - change colors here --------- */
+    :root{
+      --bg-1: #0f172a;           /* deep midnight */
+      --bg-2: #2b1055;           /* purple */
+      --accent: #ff758c;         /* coral/pink */
+      --accent-2: #ffd194;       /* soft gold */
+      --muted: rgba(255,255,255,0.85);
+      --glass: rgba(255,255,255,0.06);
+      --card-radius: 18px;
+      --max-width: 1100px;
+      --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+
+    *{box-sizing: border-box}
+    html,body{height:100%;margin:0;font-family:var(--font-sans);color:var(--muted);background:linear-gradient(160deg,var(--bg-1),var(--bg-2));}
+
+    /* Container */
+    .wrap{max-width:var(--max-width);margin:0 auto;padding:28px}
+
+    /* HERO */
+    header.hero{display:flex;gap:28px;align-items:center;justify-content:space-between;padding:32px 0}
+    .hero-left{flex:1}
+    .title{font-size:clamp(26px,4vw,48px);font-weight:700;letter-spacing:-0.02em;margin:0}
+    .subtitle{margin-top:10px;font-size:clamp(13px,2vw,18px);color:rgba(255,255,255,0.85)}
+
+    /* CTA and audio */
+    .controls{display:flex;gap:12px;align-items:center;margin-top:18px}
+    .btn{background:linear-gradient(90deg,var(--accent),var(--accent-2));border:none;padding:10px 16px;border-radius:12px;font-weight:600;cursor:pointer}
+    .ghost{background:transparent;border:1px solid rgba(255,255,255,0.08);padding:8px 12px;border-radius:12px}
+
+    /* Profile card */
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));padding:18px;border-radius:var(--card-radius);backdrop-filter: blur(6px);box-shadow:0 6px 30px rgba(2,6,23,0.5)}
+    .avatar{width:120px;height:120px;border-radius:16px;object-fit:cover;box-shadow:0 6px 18px rgba(0,0,0,0.45)}
+
+    /* Timeline */
+    .timeline{margin:42px 0;padding:0;list-style:none;display:grid;gap:20px}
+    .t-item{display:grid;grid-template-columns:120px 1fr;gap:18px;align-items:start}
+    .t-date{font-weight:700;color:var(--accent);}
+    .t-body{background:var(--glass);padding:14px;border-radius:12px}
+
+    /* Gallery */
+    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin:30px 0}
+    .gallery img{width:100%;height:160px;object-fit:cover;border-radius:12px;cursor:pointer;transition:transform .3s ease}
+    .gallery img:hover{transform:scale(1.03)}
+
+    /* Letters + message */
+    .letters{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:30px}
+    .letter{background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));padding:18px;border-radius:12px}
+
+    /* Countdown */
+    .countdown{display:flex;gap:12px;align-items:center}
+    .countdown .box{background:var(--glass);padding:12px;border-radius:10px;min-width:68px}
+    .big{font-size:22px;font-weight:700}
+
+    /* Footer */
+    footer{margin:50px 0 30px;text-align:center;color:rgba(255,255,255,0.7)}
+
+    /* Floating hearts */
+    .hearts{position:fixed;pointer-events:none;inset:0;z-index:5}
+
+    /* Lightbox */
+    .lightbox{position:fixed;inset:0;background:rgba(0,0,0,0.8);display:flex;align-items:center;justify-content:center;padding:20px;visibility:hidden;opacity:0;transition:opacity .25s ease}
+    .lightbox.visible{visibility:visible;opacity:1}
+    .lightbox img{max-width:95%;max-height:85%;border-radius:12px}
+
+    /* Responsiveness */
+    @media (max-width:880px){
+      .letters{grid-template-columns:1fr}
+      .t-item{grid-template-columns:90px 1fr}
+    }
+
+    /* Tiny animations */
+    .fade-up{opacity:0;transform:translateY(12px);transition:all .8s cubic-bezier(.2,.9,.2,1)}
+    .fade-up.visible{opacity:1;transform:none}
+
+    /* Typewriter */
+    .typewriter{font-weight:700;color:var(--accent);display:inline-block}
+
+    /* subtle confetti burst animation used programmatically */
+    .confetti{position:fixed;left:50%;top:50%;pointer-events:none;z-index:40}
+  </style>
+</head>
+<body>
+  <div class="hearts" id="hearts"></div>
+
+  <div class="wrap">
+    <header class="hero">
+      <div class="hero-left">
+        <h1 class="title">Happy 1st Anniversary, my love ❤️</h1>
+        <p class="subtitle">Across the miles, across time — today is ours. This page is our little capsule: photos, memories, letters, and a promise.</p>
+
+        <div class="controls" style="margin-top:18px">
+          <button class="btn" id="playPause">⏯ Play Music</button>
+          <button class="ghost" id="toggleHearts">❣️ Hearts</button>
+          <button class="ghost" id="surprise">🎉 Surprise</button>
+        </div>
+
+        <div style="margin-top:14px;color:rgba(255,255,255,0.75);font-size:13px">Made with ❤ — replace photos and song file in the folder to personalize.</div>
+      </div>
+
+      <div style="width:320px;max-width:40%">
+        <div class="card" style="text-align:left">
+          <img src="photo1.jpg" alt="Us" class="avatar">
+          <h3 style="margin:12px 0 4px">[Your Name] & [Their Name]</h3>
+          <div style="font-size:13px;color:rgba(255,255,255,0.8)">One year together — long distance but never far from heart.</div>
+
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px">
+            <div style="background:rgba(255,255,255,0.03);padding:8px;border-radius:10px;font-size:13px">Distance: [X km / miles]</div>
+            <div style="background:rgba(255,255,255,0.03);padding:8px;border-radius:10px;font-size:13px">Met: [Date met]</div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- TIMELINE -->
+    <section>
+      <h2 style="margin-top:6px">Our Story — Timeline</h2>
+      <ol class="timeline">
+        <li class="t-item fade-up">
+          <div class="t-date">[Month YYYY]</div>
+          <div class="t-body">
+            <strong>The First Message</strong>
+            <p>We said hello. A nervous message that opened everything. (Replace this text with what actually happened)</p>
+          </div>
+        </li>
+
+        <li class="t-item fade-up">
+          <div class="t-date">[Month YYYY]</div>
+          <div class="t-body">
+            <strong>First Voice Call</strong>
+            <p>That night-long call where we couldn't stop laughing. Your laugh hooked me.</p>
+          </div>
+        </li>
+
+        <li class="t-item fade-up">
+          <div class="t-date">[Month YYYY]</div>
+          <div class="t-body">
+            <strong>The First Visit</strong>
+            <p>The day we met in person — the world was small again. (Add place & memory)</p>
+          </div>
+        </li>
+
+        <li class="t-item fade-up">
+          <div class="t-date">Today</div>
+          <div class="t-body">
+            <strong>1st Anniversary</strong>
+            <p>We made it. One year of small rituals, big feelings, and patient love.</p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- GALLERY -->
+    <section>
+      <h2>Memories — Gallery</h2>
+      <div class="gallery">
+        <img src="photo2.jpg" alt="memory 1" class="fade-up" data-full="photo2.jpg">
+        <img src="photo3.jpg" alt="memory 2" class="fade-up" data-full="photo3.jpg">
+        <img src="photo4.jpg" alt="memory 3" class="fade-up" data-full="photo4.jpg">
+        <img src="photo5.jpg" alt="memory 4" class="fade-up" data-full="photo5.jpg">
+        <img src="photo6.jpg" alt="memory 5" class="fade-up" data-full="photo6.jpg">
+        <img src="photo1.jpg" alt="memory 6" class="fade-up" data-full="photo1.jpg">
+      </div>
+    </section>
+
+    <!-- LETTERS -->
+    <section>
+      <h2>Open When... (Letters)</h2>
+      <div class="letters">
+        <div class="letter fade-up">
+          <h3>Open when you're missing me</h3>
+          <p>Read this and remember: distance is a comma, not a full stop. I'm always with you in the small things.</p>
+        </div>
+
+        <div class="letter fade-up">
+          <h3>Open when you need a laugh</h3>
+          <p>Remember that silly story about [memorable silly thing]? I'm laughing just thinking about it.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- COUNTDOWN -->
+    <section>
+      <h2>Countdown to our next anniversary</h2>
+      <div style="margin-top:8px;" class="card">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:18px">
+          <div>
+            <div style="font-size:14px;color:rgba(255,255,255,0.8)">Next big date:</div>
+            <div style="font-weight:700;font-size:18px">July 14, 2026</div>
+          </div>
+
+          <div class="countdown" id="countdown">
+            <div class="box"><div class="big" id="days">0</div><div style="font-size:12px">Days</div></div>
+            <div class="box"><div class="big" id="hours">0</div><div style="font-size:12px">Hours</div></div>
+            <div class="box"><div class="big" id="mins">0</div><div style="font-size:12px">Mins</div></div>
+            <div class="box"><div class="big" id="secs">0</div><div style="font-size:12px">Secs</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SURPRISE MESSAGE -->
+    <section>
+      <h2>For You — A Little Surprise</h2>
+      <div class="card" style="padding:26px;text-align:left">
+        <p class="fade-up">If you click the 🎉 Surprise button, you'll see a little animation and a message from me. Use that moment to tell him something special. (Or copy/paste your secret message in the <code>&lt;p&gt;</code> below.)</p>
+        <p id="surpriseMsg" style="margin-top:12px;font-weight:700;display:none">My love, across every sunrise and every midnight, I choose you. Happy anniversary — here's to forever.</p>
+      </div>
+    </section>
+
+    <footer>
+      <div style="font-size:14px">Made with love • Replace assets and texts to personalize • Tested for desktop & mobile</div>
+      <div style="margin-top:8px;font-size:12px;color:rgba(255,255,255,0.5)">Tip: Mobile browsers often block autoplay. If music does not start automatically, ask him to press Play.</div>
+    </footer>
+  </div>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox"><img id="lightboxImg" src="" alt="big photo"></div>
+
+  <!-- AUDIO (replace your-song.mp3) -->
+  <audio id="bgAudio" loop preload="auto">
+    <source src="your-song.mp3" type="audio/mpeg">
+    <!-- Add fallback text -->
+  </audio>
+
+  <!-- CONFETTI CANVAS -->
+  <canvas class="confetti" id="confettiCanvas"></canvas>
+
+  <script>
+    // ---------- Utilities ----------
+    const fadeEls = document.querySelectorAll('.fade-up');
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); })
+    },{threshold:0.12});
+    fadeEls.forEach(el=>io.observe(el));
+
+    // ---------- Lightbox for gallery ----------
+    const galleryImgs = document.querySelectorAll('.gallery img');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    galleryImgs.forEach(img=>{
+      img.addEventListener('click', ()=>{
+        lightboxImg.src = img.dataset.full || img.src;
+        lightbox.classList.add('visible');
+      });
+    });
+    lightbox.addEventListener('click', ()=> lightbox.classList.remove('visible'));
+
+    // ---------- Hearts floating (toggle) ----------
+    const heartsEl = document.getElementById('hearts');
+    let heartsOn = true;
+    document.getElementById('toggleHearts').addEventListener('click', ()=>{
+      heartsOn = !heartsOn;
+      heartsEl.innerHTML = heartsOn ? startHearts(18) : '';
+    });
+
+    function heartHTML(x,y,size,delay,rot){
+      return `<div style='position:absolute;left:${x}% ;top:${y}%;transform:translate(-50%,-50%) rotate(${rot}deg);opacity:0;animation:rise 6s ${delay}s linear forwards'>
+        <svg width='${size}' height='${size}' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
+          <path d='M12 21s-7-4.35-9-7.5C.7 9.1 4 5 7.5 6.5 9.2 7.2 10.1 9 12 10 13.9 9 14.8 7.2 16.5 6.5 20 5 23.3 9.1 21 13.5 19 16.65 12 21 12 21z' fill='${getComputedStyle(document.documentElement).getPropertyValue('--accent')}' opacity='0.95'/>
+        </svg></div>`;
+    }
+
+    function startHearts(n){
+      let s='';
+      for(let i=0;i<n;i++){
+        const x = Math.random()*100; const y = 90+Math.random()*10; const size = 18+Math.random()*36; const delay = Math.random()*3; const rot = (Math.random()*60)-30;
+        s += heartHTML(x,y,size,delay,rot);
+      }
+      return s;
+    }
+
+    // add CSS keyframes for hearts programmatically so they exist
+    const style = document.createElement('style');
+    style.innerHTML = `@keyframes rise{0%{transform:translate(-50%,0) scale(0.6);opacity:0}10%{opacity:1}100%{transform:translate(-50%,-120vh) scale(1);opacity:0}}`;
+    document.head.appendChild(style);
+    heartsEl.innerHTML = startHearts(18);
+
+    // ---------- Audio control ----------
+    const audio = document.getElementById('bgAudio');
+    const playBtn = document.getElementById('playPause');
+    let playing = false;
+    playBtn.addEventListener('click', ()=>{
+      if(!playing){audio.play().catch(()=>{}); playBtn.textContent='⏸ Pause Music'; playing=true}
+      else{audio.pause(); playBtn.textContent='⏯ Play Music'; playing=false}
+    });
+
+    // Try autoplay (may be blocked on some devices)
+    setTimeout(()=>{
+      audio.play().then(()=>{playing=true;playBtn.textContent='⏸ Pause Music'}).catch(()=>{/*autoplay blocked*/});
+    },800);
+
+    // ---------- Surprise button (confetti + reveal message) ----------
+    document.getElementById('surprise').addEventListener('click', ()=>{
+      // reveal message
+      const msg = document.getElementById('surpriseMsg');
+      msg.style.display = 'block';
+      msg.classList.add('visible');
+      // small confetti burst
+      burstConfetti();
+    });
+
+    // ---------- Countdown ----------
+    // Set target date here (YYYY, M-1, D)
+    const target = new Date(2026,6,14,0,0,0); // July 14, 2026 (months are 0-indexed)
+    function updateCountdown(){
+      const now = new Date();
+      let diff = Math.max(0, (target - now)/1000);
+      const days = Math.floor(diff/86400); diff %= 86400;
+      const hours = Math.floor(diff/3600); diff%=3600;
+      const mins = Math.floor(diff/60); const secs = Math.floor(diff%60);
+      document.getElementById('days').textContent = String(days);
+      document.getElementById('hours').textContent = String(hours).padStart(2,'0');
+      document.getElementById('mins').textContent = String(mins).padStart(2,'0');
+      document.getElementById('secs').textContent = String(secs).padStart(2,'0');
+    }
+    updateCountdown(); setInterval(updateCountdown,1000);
+
+    // ---------- Confetti (canvas) ----------
+    const canvas = document.getElementById('confettiCanvas');
+    const ctx = canvas.getContext('2d');
+    function resizeCanvas(){canvas.width=window.innerWidth; canvas.height=window.innerHeight}
+    window.addEventListener('resize', resizeCanvas); resizeCanvas();
+
+    function burstConfetti(){
+      const pieces = [];
+      const colors = [getComputedStyle(document.documentElement).getPropertyValue('--accent').trim()||'#ff758c', getComputedStyle(document.documentElement).getPropertyValue('--accent-2').trim()||'#ffd194', '#fff'];
+      for(let i=0;i<160;i++){
+        pieces.push({x:canvas.width/2,y:canvas.height/2,vx:(Math.random()-0.5)*10,vy:(Math.random()-1.5)*10,rot:Math.random()*360, w:6+Math.random()*8, h:6+Math.random()*8, color:colors[Math.floor(Math.random()*colors.length)], life:60+Math.random()*40});
+      }
+      let t=0;
+      function frame(){
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        for(let p of pieces){
+          p.x += p.vx; p.y += p.vy; p.vy += 0.25; p.rot += p.vx*0.05; p.life--;
+          ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.rot* Math.PI/180);
+          ctx.fillStyle = p.color; ctx.fillRect(-p.w/2, -p.h/2, p.w, p.h);
+          ctx.restore();
+        }
+        pieces.forEach((p,i)=>{ if(p.life<=0) pieces.splice(i,1) });
+        if(pieces.length>0 && t<300){ t++; requestAnimationFrame(frame) } else ctx.clearRect(0,0,canvas.width,canvas.height);
+      }
+      frame();
+    }
+
+    // ---------- tiny confetti used on click too ----------
+    function tinyConfetti(x,y){ /* optional small burst near click position */ }
+
+    // ---------- Small accessibility nicety: keyboard close lightbox ----------
+    window.addEventListener('keydown',(e)=>{ if(e.key==='Escape') lightbox.classList.remove('visible') });
+
+    // ---------- END ----------
+  </script>
+</body>
+</html>
