@@ -1,372 +1,370 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Our 1st Anniversary ❤️ — A Love Across Miles</title>
-  <meta name="description" content="A little one-page anniversary website to celebrate your long-distance love." />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Our 1st Anniversary ❤️ — A Love Across Miles</title>
+<meta name="description" content="A personalized one-page anniversary site with music, gallery, letters, timeline, and animations." />
 
-  <!-- -------------
-    HOW TO USE
-    1) Save this file as `index.html`.
-    2) Put your photos (photo1.jpg .. photo6.jpg) and your-song.mp3 in the same folder.
-    3) Open index.html in a browser. Replace texts / dates / names below.
-    4) To change colors, edit the CSS variables in :root.
-  ------------- -->
+<!--
+  HOW TO USE
+  1) Save this file as `index.html`.
+  2) Put your photos (photo1.jpg .. photo8.jpg) and your-song.mp3 in the same folder.
+  3) Open index.html in a browser. Edit names, dates, and texts below.
+  4) Change colors in :root -- easy theme variables.
+-->
 
-  <style>
-    /* --------- Theme - change colors here --------- */
-    :root{
-      --bg-1: #0f172a;           /* deep midnight */
-      --bg-2: #2b1055;           /* purple */
-      --accent: #ff758c;         /* coral/pink */
-      --accent-2: #ffd194;       /* soft gold */
-      --muted: rgba(255,255,255,0.85);
-      --glass: rgba(255,255,255,0.06);
-      --card-radius: 18px;
-      --max-width: 1100px;
-      --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-    }
+<style>
+  :root{
+    /* Theme variables: change these to update look */
+    --bg-top: #fce7f3;       /* soft pink */
+    --bg-bottom: #fef3c7;    /* creamy gold */
+    --panel: rgba(255,255,255,0.7);
+    --text: #2b2b2b;
+    --accent: #ff4666;
+    --accent-2: #ffb86b;
+    --muted: rgba(43,43,43,0.7);
+    --card-radius: 18px;
+    --max-width: 1200px;
+    --font-sans: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, Arial;
+  }
 
-    *{box-sizing: border-box}
-    html,body{height:100%;margin:0;font-family:var(--font-sans);color:var(--muted);background:linear-gradient(160deg,var(--bg-1),var(--bg-2));}
+  /* Base */
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0;font-family:var(--font-sans);color:var(--text);background:linear-gradient(180deg,var(--bg-top),var(--bg-bottom));-webkit-font-smoothing:antialiased}
+  a{color:inherit}
 
-    /* Container */
-    .wrap{max-width:var(--max-width);margin:0 auto;padding:28px}
+  /* Fullscreen hero that fills viewport until scroll */
+  .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:32px}
+  .hero-inner{max-width:var(--max-width);width:100%;display:grid;grid-template-columns:1fr 360px;gap:28px;align-items:center}
+  .hero-content{text-align:left;padding:28px;background:linear-gradient(180deg,rgba(255,255,255,0.85),rgba(255,255,255,0.72));border-radius:22px;box-shadow:0 10px 40px rgba(20,20,20,0.08)}
+  .hero-content h1{font-size:clamp(28px,5vw,48px);margin:0;color:var(--accent)}
+  .hero-content p{margin:12px 0 0;color:var(--muted);line-height:1.45}
+  .controls{margin-top:18px;display:flex;gap:12px;flex-wrap:wrap}
+  .btn{padding:10px 16px;border-radius:12px;border:none;cursor:pointer;font-weight:700}
+  .btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:white}
+  .btn-ghost{background:transparent;border:1px solid rgba(0,0,0,0.06)}
+  .note{font-size:13px;color:var(--muted);margin-top:10px}
 
-    /* HERO */
-    header.hero{display:flex;gap:28px;align-items:center;justify-content:space-between;padding:32px 0}
-    .hero-left{flex:1}
-    .title{font-size:clamp(26px,4vw,48px);font-weight:700;letter-spacing:-0.02em;margin:0}
-    .subtitle{margin-top:10px;font-size:clamp(13px,2vw,18px);color:rgba(255,255,255,0.85)}
+  /* Profile card */
+  .card{background:rgba(255,255,255,0.95);padding:18px;border-radius:16px;text-align:center}
+  .avatar{width:120px;height:120px;border-radius:16px;object-fit:cover;margin-bottom:12px}
+  .muted-small{font-size:13px;color:var(--muted)}
+  .meta{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:12px}
+  .meta .pill{background:rgba(0,0,0,0.03);padding:8px 10px;border-radius:10px;font-size:13px}
 
-    /* CTA and audio */
-    .controls{display:flex;gap:12px;align-items:center;margin-top:18px}
-    .btn{background:linear-gradient(90deg,var(--accent),var(--accent-2));border:none;padding:10px 16px;border-radius:12px;font-weight:600;cursor:pointer}
-    .ghost{background:transparent;border:1px solid rgba(255,255,255,0.08);padding:8px 12px;border-radius:12px}
+  /* Sections */
+  section{max-width:var(--max-width);margin:80px auto;padding:0 22px}
+  h2{font-size:22px;margin:0 0 18px;color:var(--text)}
+  .timeline{display:grid;gap:14px}
+  .t-item{display:flex;gap:14px;align-items:flex-start;background:rgba(255,255,255,0.9);padding:14px;border-radius:12px}
+  .t-date{width:120px;font-weight:700;color:var(--accent)}
 
-    /* Profile card */
-    .card{background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));padding:18px;border-radius:var(--card-radius);backdrop-filter: blur(6px);box-shadow:0 6px 30px rgba(2,6,23,0.5)}
-    .avatar{width:120px;height:120px;border-radius:16px;object-fit:cover;box-shadow:0 6px 18px rgba(0,0,0,0.45)}
+  /* Gallery */
+  .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
+  .gallery img{width:100%;height:160px;object-fit:cover;border-radius:12px;cursor:pointer;transition:transform .25s}
+  .gallery img:hover{transform:scale(1.03)}
 
-    /* Timeline */
-    .timeline{margin:42px 0;padding:0;list-style:none;display:grid;gap:20px}
-    .t-item{display:grid;grid-template-columns:120px 1fr;gap:18px;align-items:start}
-    .t-date{font-weight:700;color:var(--accent);}
-    .t-body{background:var(--glass);padding:14px;border-radius:12px}
+  /* Letters (clickable cards -> modal) */
+  .letters{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+  .letter{background:linear-gradient(180deg,#fff,#fff);padding:16px;border-radius:12px;cursor:pointer;box-shadow:0 8px 30px rgba(10,10,10,0.06)}
+  .letter h3{margin:0 0 8px;font-size:16px;color:var(--accent)}
+  .letter p{margin:0;color:var(--muted)}
 
-    /* Gallery */
-    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin:30px 0}
-    .gallery img{width:100%;height:160px;object-fit:cover;border-radius:12px;cursor:pointer;transition:transform .3s ease}
-    .gallery img:hover{transform:scale(1.03)}
+  /* Modal */
+  .modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.5);visibility:hidden;opacity:0;transition:opacity .2s}
+  .modal.visible{visibility:visible;opacity:1}
+  .modal .box{background:white;color:var(--text);max-width:720px;width:94%;padding:22px;border-radius:14px;box-shadow:0 18px 60px rgba(10,10,10,0.25)}
+  .modal .box h3{margin-top:0}
+  .close{background:transparent;border:none;font-size:18px;position:absolute;right:18px;top:18px;cursor:pointer}
 
-    /* Letters + message */
-    .letters{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:30px}
-    .letter{background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));padding:18px;border-radius:12px}
+  /* Lightbox (gallery) */
+  .lightbox{position:fixed;inset:0;background:rgba(0,0,0,0.85);display:flex;align-items:center;justify-content:center;visibility:hidden;opacity:0;transition:opacity .2s}
+  .lightbox.visible{visibility:visible;opacity:1}
+  .lightbox img{max-width:94%;max-height:86%;border-radius:12px}
 
-    /* Countdown */
-    .countdown{display:flex;gap:12px;align-items:center}
-    .countdown .box{background:var(--glass);padding:12px;border-radius:10px;min-width:68px}
-    .big{font-size:22px;font-weight:700}
+  /* Floating petals/hearts */
+  .decor-layer{pointer-events:none;position:fixed;inset:0;overflow:hidden}
+  .petal{position:absolute;will-change:transform;opacity:0.95}
 
-    /* Footer */
-    footer{margin:50px 0 30px;text-align:center;color:rgba(255,255,255,0.7)}
+  /* Countdown */
+  .countdown{display:flex;gap:10px;align-items:center}
+  .countdown .box{background:white;padding:10px 12px;border-radius:10px;min-width:68px;text-align:center}
+  .countdown .big{font-weight:800;font-size:18px}
 
-    /* Floating hearts */
-    .hearts{position:fixed;pointer-events:none;inset:0;z-index:5}
-
-    /* Lightbox */
-    .lightbox{position:fixed;inset:0;background:rgba(0,0,0,0.8);display:flex;align-items:center;justify-content:center;padding:20px;visibility:hidden;opacity:0;transition:opacity .25s ease}
-    .lightbox.visible{visibility:visible;opacity:1}
-    .lightbox img{max-width:95%;max-height:85%;border-radius:12px}
-
-    /* Responsiveness */
-    @media (max-width:880px){
-      .letters{grid-template-columns:1fr}
-      .t-item{grid-template-columns:90px 1fr}
-    }
-
-    /* Tiny animations */
-    .fade-up{opacity:0;transform:translateY(12px);transition:all .8s cubic-bezier(.2,.9,.2,1)}
-    .fade-up.visible{opacity:1;transform:none}
-
-    /* Typewriter */
-    .typewriter{font-weight:700;color:var(--accent);display:inline-block}
-
-    /* subtle confetti burst animation used programmatically */
-    .confetti{position:fixed;left:50%;top:50%;pointer-events:none;z-index:40}
-  </style>
+  /* responsive */
+  @media (max-width:980px){.hero-inner{grid-template-columns:1fr} .hero-content{text-align:center}}
+</style>
 </head>
 <body>
-  <div class="hearts" id="hearts"></div>
 
-  <div class="wrap">
-    <header class="hero">
-      <div class="hero-left">
-        <h1 class="title">Happy 1st Anniversary, my love ❤️</h1>
-        <p class="subtitle">Across the miles, across time — today is ours. This page is our little capsule: photos, memories, letters, and a promise.</p>
+<!-- AUDIO -->
+<audio id="bgAudio" loop preload="auto"><source src="your-song.mp3" type="audio/mpeg"></audio>
 
-        <div class="controls" style="margin-top:18px">
-          <button class="btn" id="playPause">⏯ Play Music</button>
-          <button class="ghost" id="toggleHearts">❣️ Hearts</button>
-          <button class="ghost" id="surprise">🎉 Surprise</button>
-        </div>
+<!-- Decorative petals layer (toggleable) -->
+<div class="decor-layer" id="decor"></div>
 
-        <div style="margin-top:14px;color:rgba(255,255,255,0.75);font-size:13px">Made with ❤ — replace photos and song file in the folder to personalize.</div>
+<!-- HERO: fills screen until scroll -->
+<header class="hero" id="hero">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <h1 id="heroTitle">Happy 1st Anniversary, my love ❤️</h1>
+      <p id="heroSubtitle">Across the miles, across time — today is ours. This page is our little capsule: photos, memories, letters, and a promise.</p>
+
+      <div class="controls" role="group" aria-label="controls">
+        <button class="btn btn-primary" id="playPause">⏯ Play Music</button>
+        <button class="btn btn-ghost" id="toggleDecor">🌹 Toggle Petals</button>
+        <button class="btn btn-ghost" id="surprise">🎉 Surprise</button>
       </div>
 
-      <div style="width:320px;max-width:40%">
-        <div class="card" style="text-align:left">
-          <img src="photo1.jpg" alt="Us" class="avatar">
-          <h3 style="margin:12px 0 4px">[Your Name] & [Their Name]</h3>
-          <div style="font-size:13px;color:rgba(255,255,255,0.8)">One year together — long distance but never far from heart.</div>
+      <div class="note">Made with ❤ — replace photos and song file in the folder to personalize.</div>
 
-          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px">
-            <div style="background:rgba(255,255,255,0.03);padding:8px;border-radius:10px;font-size:13px">Distance: [X km / miles]</div>
-            <div style="background:rgba(255,255,255,0.03);padding:8px;border-radius:10px;font-size:13px">Met: [Date met]</div>
-          </div>
-        </div>
+      <div style="margin-top:18px;">
+        <small class="muted-small">Tip: On most mobile browsers autoplay is blocked — ask him to press play.</small>
       </div>
-    </header>
+    </div>
 
-    <!-- TIMELINE -->
-    <section>
-      <h2 style="margin-top:6px">Our Story — Timeline</h2>
-      <ol class="timeline">
-        <li class="t-item fade-up">
-          <div class="t-date">[Month YYYY]</div>
-          <div class="t-body">
-            <strong>The First Message</strong>
-            <p>We said hello. A nervous message that opened everything. (Replace this text with what actually happened)</p>
-          </div>
-        </li>
-
-        <li class="t-item fade-up">
-          <div class="t-date">[Month YYYY]</div>
-          <div class="t-body">
-            <strong>First Voice Call</strong>
-            <p>That night-long call where we couldn't stop laughing. Your laugh hooked me.</p>
-          </div>
-        </li>
-
-        <li class="t-item fade-up">
-          <div class="t-date">[Month YYYY]</div>
-          <div class="t-body">
-            <strong>The First Visit</strong>
-            <p>The day we met in person — the world was small again. (Add place & memory)</p>
-          </div>
-        </li>
-
-        <li class="t-item fade-up">
-          <div class="t-date">Today</div>
-          <div class="t-body">
-            <strong>1st Anniversary</strong>
-            <p>We made it. One year of small rituals, big feelings, and patient love.</p>
-          </div>
-        </li>
-      </ol>
-    </section>
-
-    <!-- GALLERY -->
-    <section>
-      <h2>Memories — Gallery</h2>
-      <div class="gallery">
-        <img src="photo2.jpg" alt="memory 1" class="fade-up" data-full="photo2.jpg">
-        <img src="photo3.jpg" alt="memory 2" class="fade-up" data-full="photo3.jpg">
-        <img src="photo4.jpg" alt="memory 3" class="fade-up" data-full="photo4.jpg">
-        <img src="photo5.jpg" alt="memory 4" class="fade-up" data-full="photo5.jpg">
-        <img src="photo6.jpg" alt="memory 5" class="fade-up" data-full="photo6.jpg">
-        <img src="photo1.jpg" alt="memory 6" class="fade-up" data-full="photo1.jpg">
+    <aside class="card" aria-hidden="false">
+      <img src="photo1.jpg" alt="Us" class="avatar" id="heroAvatar">
+      <h3 id="names">[Your Name] & [Their Name]</h3>
+      <div class="muted-small">One year together — long distance but never far from heart.</div>
+      <div class="meta" style="margin-top:12px">
+        <div class="pill" id="distancePill">Distance: [X km / miles]</div>
+        <div class="pill" id="metPill">Met: [Date met]</div>
       </div>
-    </section>
-
-    <!-- LETTERS -->
-    <section>
-      <h2>Open When... (Letters)</h2>
-      <div class="letters">
-        <div class="letter fade-up">
-          <h3>Open when you're missing me</h3>
-          <p>Read this and remember: distance is a comma, not a full stop. I'm always with you in the small things.</p>
-        </div>
-
-        <div class="letter fade-up">
-          <h3>Open when you need a laugh</h3>
-          <p>Remember that silly story about [memorable silly thing]? I'm laughing just thinking about it.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- COUNTDOWN -->
-    <section>
-      <h2>Countdown to our next anniversary</h2>
-      <div style="margin-top:8px;" class="card">
-        <div style="display:flex;align-items:center;justify-content:space-between;gap:18px">
-          <div>
-            <div style="font-size:14px;color:rgba(255,255,255,0.8)">Next big date:</div>
-            <div style="font-weight:700;font-size:18px">July 14, 2026</div>
-          </div>
-
-          <div class="countdown" id="countdown">
-            <div class="box"><div class="big" id="days">0</div><div style="font-size:12px">Days</div></div>
-            <div class="box"><div class="big" id="hours">0</div><div style="font-size:12px">Hours</div></div>
-            <div class="box"><div class="big" id="mins">0</div><div style="font-size:12px">Mins</div></div>
-            <div class="box"><div class="big" id="secs">0</div><div style="font-size:12px">Secs</div></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SURPRISE MESSAGE -->
-    <section>
-      <h2>For You — A Little Surprise</h2>
-      <div class="card" style="padding:26px;text-align:left">
-        <p class="fade-up">If you click the 🎉 Surprise button, you'll see a little animation and a message from me. Use that moment to tell him something special. (Or copy/paste your secret message in the <code>&lt;p&gt;</code> below.)</p>
-        <p id="surpriseMsg" style="margin-top:12px;font-weight:700;display:none">My love, across every sunrise and every midnight, I choose you. Happy anniversary — here's to forever.</p>
-      </div>
-    </section>
-
-    <footer>
-      <div style="font-size:14px">Made with love • Replace assets and texts to personalize • Tested for desktop & mobile</div>
-      <div style="margin-top:8px;font-size:12px;color:rgba(255,255,255,0.5)">Tip: Mobile browsers often block autoplay. If music does not start automatically, ask him to press Play.</div>
-    </footer>
+    </aside>
   </div>
+</header>
 
-  <!-- LIGHTBOX -->
-  <div class="lightbox" id="lightbox"><img id="lightboxImg" src="" alt="big photo"></div>
+<!-- SECTIONS -->
+<section id="story">
+  <h2>Our Story — Timeline</h2>
+  <div class="timeline">
+    <div class="t-item">
+      <div class="t-date">[Month YYYY]</div>
+      <div>
+        <strong>First Message</strong>
+        <p class="muted-small">The message that changed everything — replace with your real memory.</p>
+      </div>
+    </div>
 
-  <!-- AUDIO (replace your-song.mp3) -->
-  <audio id="bgAudio" loop preload="auto">
-    <source src="your-song.mp3" type="audio/mpeg">
-    <!-- Add fallback text -->
-  </audio>
+    <div class="t-item">
+      <div class="t-date">[Month YYYY]</div>
+      <div>
+        <strong>First Voice Call</strong>
+        <p class="muted-small">That night-long call where we couldn't stop laughing.</p>
+      </div>
+    </div>
 
-  <!-- CONFETTI CANVAS -->
-  <canvas class="confetti" id="confettiCanvas"></canvas>
+    <div class="t-item">
+      <div class="t-date">[Date]</div>
+      <div>
+        <strong>First Movie We Watched</strong>
+        <p class="muted-small" id="firstMovie">[Movie Name] — we laughed, cried, and quoted it for weeks.</p>
+      </div>
+    </div>
 
-  <script>
-    // ---------- Utilities ----------
-    const fadeEls = document.querySelectorAll('.fade-up');
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); })
-    },{threshold:0.12});
-    fadeEls.forEach(el=>io.observe(el));
+    <div class="t-item">
+      <div class="t-date">Today</div>
+      <div>
+        <strong>1st Anniversary</strong>
+        <p class="muted-small">We made it. One year of small rituals, big feelings, and patient love.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-    // ---------- Lightbox for gallery ----------
-    const galleryImgs = document.querySelectorAll('.gallery img');
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightboxImg');
-    galleryImgs.forEach(img=>{
-      img.addEventListener('click', ()=>{
-        lightboxImg.src = img.dataset.full || img.src;
-        lightbox.classList.add('visible');
-      });
-    });
-    lightbox.addEventListener('click', ()=> lightbox.classList.remove('visible'));
+<section id="gallery">
+  <h2>Memories — Gallery</h2>
+  <div class="gallery" id="galleryGrid">
+    <img src="photo2.jpg" alt="mem1" data-full="photo2.jpg">
+    <img src="photo3.jpg" alt="mem2" data-full="photo3.jpg">
+    <img src="photo4.jpg" alt="mem3" data-full="photo4.jpg">
+    <img src="photo5.jpg" alt="mem4" data-full="photo5.jpg">
+    <img src="photo6.jpg" alt="mem5" data-full="photo6.jpg">
+    <img src="photo7.jpg" alt="mem6" data-full="photo7.jpg">
+    <img src="photo8.jpg" alt="mem7" data-full="photo8.jpg">
+  </div>
+</section>
 
-    // ---------- Hearts floating (toggle) ----------
-    const heartsEl = document.getElementById('hearts');
-    let heartsOn = true;
-    document.getElementById('toggleHearts').addEventListener('click', ()=>{
-      heartsOn = !heartsOn;
-      heartsEl.innerHTML = heartsOn ? startHearts(18) : '';
-    });
+<section id="letters">
+  <h2>Letters — Open When...</h2>
+  <div class="letters" id="lettersGrid">
+    <div class="letter" data-title="Open when you're missing me" data-full="Distance is only a comma in our story — not an end. Close your eyes and know I'm there."> 
+      <h3>Open when you're missing me</h3>
+      <p class="muted-small">A short note to hold you until we speak again.</p>
+    </div>
 
-    function heartHTML(x,y,size,delay,rot){
-      return `<div style='position:absolute;left:${x}% ;top:${y}%;transform:translate(-50%,-50%) rotate(${rot}deg);opacity:0;animation:rise 6s ${delay}s linear forwards'>
-        <svg width='${size}' height='${size}' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
-          <path d='M12 21s-7-4.35-9-7.5C.7 9.1 4 5 7.5 6.5 9.2 7.2 10.1 9 12 10 13.9 9 14.8 7.2 16.5 6.5 20 5 23.3 9.1 21 13.5 19 16.65 12 21 12 21z' fill='${getComputedStyle(document.documentElement).getPropertyValue('--accent')}' opacity='0.95'/>
-        </svg></div>`;
-    }
+    <div class="letter" data-title="Open when you need to laugh" data-full="Remember the time we got lost and ordered the world's spiciest noodles? I still cry laughing thinking about it."> 
+      <h3>Open when you need to laugh</h3>
+      <p class="muted-small">A memory that'll make you grin.</p>
+    </div>
 
-    function startHearts(n){
-      let s='';
-      for(let i=0;i<n;i++){
-        const x = Math.random()*100; const y = 90+Math.random()*10; const size = 18+Math.random()*36; const delay = Math.random()*3; const rot = (Math.random()*60)-30;
-        s += heartHTML(x,y,size,delay,rot);
-      }
-      return s;
-    }
+    <div class="letter" data-title="Open when you're having a bad day" data-full="Breathe. I believe in you. This too shall pass, and I'll be waiting with warm tea and a dumb joke."> 
+      <h3>Open when you're having a bad day</h3>
+      <p class="muted-small">Words to remind you you're not alone.</p>
+    </div>
 
-    // add CSS keyframes for hearts programmatically so they exist
-    const style = document.createElement('style');
-    style.innerHTML = `@keyframes rise{0%{transform:translate(-50%,0) scale(0.6);opacity:0}10%{opacity:1}100%{transform:translate(-50%,-120vh) scale(1);opacity:0}}`;
-    document.head.appendChild(style);
-    heartsEl.innerHTML = startHearts(18);
+    <div class="letter" data-title="Open when you're proud of yourself" data-full="You did it — celebrate. I am proud of you more than words can say."> 
+      <h3>Open when you're proud of yourself</h3>
+      <p class="muted-small">A little reward note.</p>
+    </div>
 
-    // ---------- Audio control ----------
-    const audio = document.getElementById('bgAudio');
-    const playBtn = document.getElementById('playPause');
-    let playing = false;
-    playBtn.addEventListener('click', ()=>{
-      if(!playing){audio.play().catch(()=>{}); playBtn.textContent='⏸ Pause Music'; playing=true}
-      else{audio.pause(); playBtn.textContent='⏯ Play Music'; playing=false}
-    });
+    <div class="letter" data-title="Open on our anniversaries" data-full="Another year, another chapter. Thank you for showing up — for the calls, the late nights, the love."> 
+      <h3>Open on our anniversaries</h3>
+      <p class="muted-small">A yearly reminder of forever.</p>
+    </div>
 
-    // Try autoplay (may be blocked on some devices)
-    setTimeout(()=>{
-      audio.play().then(()=>{playing=true;playBtn.textContent='⏸ Pause Music'}).catch(()=>{/*autoplay blocked*/});
-    },800);
+    <div class="letter" data-title="Open when you want to remember our firsts" data-full="First message, first call, first visit — a little list of the moments that built us."> 
+      <h3>Open when you want to remember our firsts</h3>
+      <p class="muted-small">All the 'firsts' in one place.</p>
+    </div>
+  </div>
+</section>
 
-    // ---------- Surprise button (confetti + reveal message) ----------
-    document.getElementById('surprise').addEventListener('click', ()=>{
-      // reveal message
-      const msg = document.getElementById('surpriseMsg');
-      msg.style.display = 'block';
-      msg.classList.add('visible');
-      // small confetti burst
-      burstConfetti();
-    });
+<section id="countdown">
+  <h2>Countdown to our next anniversary</h2>
+  <div class="card" style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+    <div>
+      <div class="muted-small">Next big date</div>
+      <div style="font-weight:800">July 14, 2026</div>
+    </div>
+    <div class="countdown" id="countdownBoxes">
+      <div class="box"><div class="big" id="days">0</div><div class="muted-small">Days</div></div>
+      <div class="box"><div class="big" id="hours">0</div><div class="muted-small">Hrs</div></div>
+      <div class="box"><div class="big" id="mins">0</div><div class="muted-small">Mins</div></div>
+      <div class="box"><div class="big" id="secs">0</div><div class="muted-small">Secs</div></div>
+    </div>
+  </div>
+</section>
 
-    // ---------- Countdown ----------
-    // Set target date here (YYYY, M-1, D)
-    const target = new Date(2026,6,14,0,0,0); // July 14, 2026 (months are 0-indexed)
-    function updateCountdown(){
-      const now = new Date();
-      let diff = Math.max(0, (target - now)/1000);
-      const days = Math.floor(diff/86400); diff %= 86400;
-      const hours = Math.floor(diff/3600); diff%=3600;
-      const mins = Math.floor(diff/60); const secs = Math.floor(diff%60);
-      document.getElementById('days').textContent = String(days);
-      document.getElementById('hours').textContent = String(hours).padStart(2,'0');
-      document.getElementById('mins').textContent = String(mins).padStart(2,'0');
-      document.getElementById('secs').textContent = String(secs).padStart(2,'0');
-    }
-    updateCountdown(); setInterval(updateCountdown,1000);
+<footer style="padding:40px 20px;text-align:center;color:rgba(0,0,0,0.6)">
+  <div>Made with ♥ — edit texts, photos and song file to personalize.</div>
+</footer>
 
-    // ---------- Confetti (canvas) ----------
-    const canvas = document.getElementById('confettiCanvas');
-    const ctx = canvas.getContext('2d');
-    function resizeCanvas(){canvas.width=window.innerWidth; canvas.height=window.innerHeight}
-    window.addEventListener('resize', resizeCanvas); resizeCanvas();
 
-    function burstConfetti(){
-      const pieces = [];
-      const colors = [getComputedStyle(document.documentElement).getPropertyValue('--accent').trim()||'#ff758c', getComputedStyle(document.documentElement).getPropertyValue('--accent-2').trim()||'#ffd194', '#fff'];
-      for(let i=0;i<160;i++){
-        pieces.push({x:canvas.width/2,y:canvas.height/2,vx:(Math.random()-0.5)*10,vy:(Math.random()-1.5)*10,rot:Math.random()*360, w:6+Math.random()*8, h:6+Math.random()*8, color:colors[Math.floor(Math.random()*colors.length)], life:60+Math.random()*40});
-      }
-      let t=0;
-      function frame(){
-        ctx.clearRect(0,0,canvas.width,canvas.height);
-        for(let p of pieces){
-          p.x += p.vx; p.y += p.vy; p.vy += 0.25; p.rot += p.vx*0.05; p.life--;
-          ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.rot* Math.PI/180);
-          ctx.fillStyle = p.color; ctx.fillRect(-p.w/2, -p.h/2, p.w, p.h);
-          ctx.restore();
-        }
-        pieces.forEach((p,i)=>{ if(p.life<=0) pieces.splice(i,1) });
-        if(pieces.length>0 && t<300){ t++; requestAnimationFrame(frame) } else ctx.clearRect(0,0,canvas.width,canvas.height);
-      }
-      frame();
-    }
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox"><img src="" alt="" id="lightboxImg"></div>
 
-    // ---------- tiny confetti used on click too ----------
-    function tinyConfetti(x,y){ /* optional small burst near click position */ }
+<!-- MODAL FOR LETTERS -->
+<div class="modal" id="modal"><div class="box"><button class="close" id="modalClose">✕</button><h3 id="modalTitle"></h3><div id="modalBody" style="margin-top:10px;color:var(--muted)"></div></div></div>
 
-    // ---------- Small accessibility nicety: keyboard close lightbox ----------
-    window.addEventListener('keydown',(e)=>{ if(e.key==='Escape') lightbox.classList.remove('visible') });
+<script>
+// ---------- Helpers ----------
+const audio = document.getElementById('bgAudio');
+const playBtn = document.getElementById('playPause');
+let playing = false;
+playBtn.addEventListener('click', ()=>{
+  if(!playing){audio.play().then(()=>{playBtn.textContent='⏸ Pause Music';playing=true}).catch(()=>{/*blocked*/});}
+  else{audio.pause();playBtn.textContent='⏯ Play Music';playing=false}
+});
 
-    // ---------- END ----------
-  </script>
+// Try autoplay once after a short delay (may be blocked on mobile)
+setTimeout(()=>{audio.play().then(()=>{playing=true;playBtn.textContent='⏸ Pause Music'}).catch(()=>{});},600);
+
+// ---------- Petals / decorative elements ----------
+const decor = document.getElementById('decor');
+let decorOn = true;
+const petalSVG = (size, rotate, opacity)=>`<svg class="petal" width="${size}" height="${size}" viewBox="0 0 24 24" style="transform:translate3d(${Math.random()*120-10}vw,${Math.random()*20+80}vh,0) rotate(${rotate}deg);opacity:${opacity};"><path d="M12 21s-7-4.35-9-7.5C.7 9.1 4 5 7.5 6.5 9.2 7.2 10.1 9 12 10c1.9-1 2.8-2.8 4.5-3.5C20 5 23.3 9.1 21 13.5 19 16.65 12 21 12 21z" fill="${getComputedStyle(document.documentElement).getPropertyValue('--accent')||'#ff4666'}"/></svg>`;
+
+function spawnPetals(n=16){
+  decor.innerHTML='';
+  for(let i=0;i<n;i++){
+    const size = 18+Math.random()*36;
+    const rot = Math.random()*360;
+    const op = 0.7+Math.random()*0.3;
+    const el = document.createElement('div');
+    el.innerHTML = petalSVG(size, rot, op);
+    el.style.position='absolute';
+    el.style.left = `${Math.random()*100}%`;
+    el.style.top = `${-10-Math.random()*20}%`;
+    el.style.pointerEvents='none';
+    el.style.animation = `fall ${8+Math.random()*8}s linear ${Math.random()*3}s forwards`;
+    decor.appendChild(el);
+  }
+}
+
+// CSS keyframes for falling (inject style)
+const s = document.createElement('style');
+ s.innerHTML = `@keyframes fall{to{transform:translateY(120vh) rotate(360deg);opacity:0}}`;
+ document.head.appendChild(s);
+ spawnPetals(18);
+
+// toggle
+document.getElementById('toggleDecor').addEventListener('click', ()=>{
+  decorOn = !decorOn;
+  if(decorOn) spawnPetals(18); else decor.innerHTML='';
+});
+
+// Surprise -> confetti + modal reveal
+document.getElementById('surprise').addEventListener('click', ()=>{
+  // simple reveal modal
+  showModal('A little surprise','My love, across every sunrise and every midnight, I choose you. Happy anniversary — here's to forever.');
+  burstConfetti();
+});
+
+// LIGHTBOX for gallery
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightboxImg');
+document.querySelectorAll('.gallery img').forEach(img=>{
+  img.addEventListener('click', ()=>{
+    lightboxImg.src = img.dataset.full || img.src;
+    lightbox.classList.add('visible');
+  });
+});
+lightbox.addEventListener('click', ()=> lightbox.classList.remove('visible'));
+
+// LETTERS -> modal
+const modal = document.getElementById('modal');
+const modalTitle = document.getElementById('modalTitle');
+const modalBody = document.getElementById('modalBody');
+const modalClose = document.getElementById('modalClose');
+
+document.querySelectorAll('.letter').forEach(card=>{
+  card.addEventListener('click', ()=>{
+    modalTitle.textContent = card.dataset.title || 'Letter';
+    modalBody.textContent = card.dataset.full || '...';
+    modal.classList.add('visible');
+  });
+});
+modalClose.addEventListener('click', ()=> modal.classList.remove('visible'));
+window.addEventListener('keydown', e=>{ if(e.key==='Escape') modal.classList.remove('visible'); })
+
+// COUNTDOWN
+const target = new Date(2026,6,14,0,0,0);
+function updateCountdown(){
+  const now = new Date(); let diff = Math.max(0,(target-now)/1000);
+  const days = Math.floor(diff/86400); diff%=86400;
+  const hours = Math.floor(diff/3600); diff%=3600;
+  const mins = Math.floor(diff/60); const secs = Math.floor(diff%60);
+  document.getElementById('days').textContent = String(days);
+  document.getElementById('hours').textContent = String(hours).padStart(2,'0');
+  document.getElementById('mins').textContent = String(mins).padStart(2,'0');
+  document.getElementById('secs').textContent = String(secs).padStart(2,'0');
+}
+updateCountdown(); setInterval(updateCountdown,1000);
+
+// Confetti canvas
+function burstConfetti(){
+  const canvas = document.createElement('canvas');
+  canvas.style.position='fixed'; canvas.style.left='0'; canvas.style.top='0'; canvas.style.width='100%'; canvas.style.height='100%'; canvas.style.pointerEvents='none'; canvas.width = window.innerWidth; canvas.height = window.innerHeight; document.body.appendChild(canvas);
+  const ctx = canvas.getContext('2d');
+  const pieces = [];
+  const colors = [getComputedStyle(document.documentElement).getPropertyValue('--accent').trim(), getComputedStyle(document.documentElement).getPropertyValue('--accent-2').trim(), '#fff'];
+  for(let i=0;i<250;i++) pieces.push({x:window.innerWidth/2,y:window.innerHeight/3+Math.random()*100,vx:(Math.random()-0.5)*10,vy:(Math.random()-3)*10,w:6+Math.random()*8,h:6+Math.random()*8,c:colors[Math.floor(Math.random()*colors.length)],life:80+Math.random()*60,rot:Math.random()*360});
+  let running=true;
+  function frame(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    for(let p of pieces){ p.x+=p.vx; p.y+=p.vy; p.vy+=0.2; p.life--; p.rot+=p.vx*0.1; ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.rot*Math.PI/180); ctx.fillStyle=p.c; ctx.fillRect(-p.w/2,-p.h/2,p.w,p.h); ctx.restore(); }
+    for(let i=pieces.length-1;i>=0;i--) if(pieces[i].life<=0) pieces.splice(i,1);
+    if(pieces.length>0) requestAnimationFrame(frame); else { running=false; document.body.removeChild(canvas); }
+  }
+  frame();
+}
+
+// Optional: distance calculation (uses two city names) — disabled by default
+// function setDistance(km){ document.getElementById('distancePill').textContent = 'Distance: '+km+' km' }
+
+</script>
 </body>
 </html>
