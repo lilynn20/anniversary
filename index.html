@@ -1,632 +1,603 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Lynn & Jasm ❤️ — Our Love Story</title>
-<meta name="description" content="A clean and elegant anniversary site celebrating Lynn and Jasm's beautiful love story." />
-<script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-
-<script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        fontFamily: {
-          'sans': ['Inter', 'system-ui', 'sans-serif'],
-          'serif': ['Playfair Display', 'serif'],
-        },
-        animation: {
-          'fade-in-up': 'fadeInUp 0.8s ease-out',
-          'fade-in-right': 'fadeInRight 0.8s ease-out',
-          'float': 'float 6s ease-in-out infinite',
-          'pulse-soft': 'pulseSoft 2s ease-in-out infinite',
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Anniversary</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-      }
-    }
-  }
-</script>
-
-<style>
-  @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  
-  @keyframes fadeInRight {
-    from { opacity: 0; transform: translateX(30px); }
-    to { opacity: 1; transform: translateX(0); }
-  }
-  
-  @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
-  }
-  
-  @keyframes pulseSoft {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-  }
-  
-  .glass {
-    backdrop-filter: blur(10px);
-    background: rgba(255, 255, 255, 0.8);
-  }
-  
-
-</style>
-</head>
-
-<body class="bg-gradient-to-br from-slate-50 via-white to-gray-50 min-h-screen">
-  <!-- Progress Bar -->
-  <div class="fixed top-0 left-0 w-full h-1 bg-gray-200 z-50">
-    <div id="progress-bar" class="h-full bg-gradient-to-r from-rose-400 to-pink-500 transition-all duration-300 ease-out" style="width: 0%"></div>
-  </div>
-
-  <!-- Love Counter -->
-  <div id="love-counter" class="fixed top-6 right-6 glass rounded-2xl p-4 shadow-lg border border-white/20 z-40 hover:scale-105 transition-transform duration-300">
-    <div class="text-center">
-      <div id="days-counter" class="text-2xl font-bold text-gray-800 font-serif">0</div>
-      <div class="text-xs text-gray-600 uppercase tracking-wide">Days Together</div>
-    </div>
-  </div>
-
-  <!-- Music Player -->
-  <div id="music-player" class="fixed bottom-6 right-6 bg-white rounded-full shadow-xl border border-gray-100 p-4 hover:scale-110 transition-all duration-300 cursor-pointer z-40 group">
-    <div class="flex items-center gap-3">
-      <i id="play-icon" class="fas fa-play text-rose-500 text-lg"></i>
-      <div id="player-info" class="hidden group-hover:block text-sm text-gray-700 whitespace-nowrap pr-2">
-        <div class="font-medium">Our Love Song</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Hero Section -->
-  <section class="min-h-screen flex items-center justify-center px-6 py-20">
-    <div class="max-w-7xl mx-auto">
-      <div class="grid lg:grid-cols-2 gap-16 items-center">
-        <!-- Content -->
-        <div class="animate-fade-in-up">
-          <div class="space-y-6">
-            <div class="space-y-2">
-              <h1 class="text-5xl lg:text-7xl font-serif font-bold text-gray-900 leading-tight">
-                Lynn & Jasm
-              </h1>
-              <div class="flex items-center gap-3 text-rose-500">
-                <div class="w-12 h-0.5 bg-rose-500"></div>
-                <span class="text-lg font-medium">Our Love Story</span>
-                <div class="w-12 h-0.5 bg-rose-500"></div>
-              </div>
-            </div>
-            
-            <p class="text-xl text-gray-600 leading-relaxed max-w-lg">
-              From that magical first meeting on August 1st to making it official on September 22nd, every moment has been a beautiful chapter in our story.
-            </p>
-            
-            <div class="flex flex-wrap gap-4 pt-4">
-              <button onclick="scrollToSection('timeline')" class="bg-gray-900 text-white px-8 py-3 rounded-full hover:bg-gray-800 transition-colors duration-300 flex items-center gap-2">
-                <i class="fas fa-heart"></i>
-                Our Journey
-              </button>
-              <button onclick="scrollToSection('gallery')" class="border-2 border-gray-900 text-gray-900 px-8 py-3 rounded-full hover:bg-gray-900 hover:text-white transition-all duration-300 flex items-center gap-2">
-                <i class="fas fa-images"></i>
-                Memories
-              </button>
-            </div>
-          </div>
-        </div>
         
-        <!-- Hero Image -->
-        <div class="animate-fade-in-right">
-          <div class="relative">
-            <div class="absolute inset-0 bg-gradient-to-tr from-rose-100 to-pink-100 rounded-3xl transform rotate-3"></div>
-            <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=600&h=600&fit=crop&crop=faces" 
-                 alt="Couple in love" 
-                 class="relative rounded-3xl shadow-2xl w-full h-96 object-cover">
-            <div class="absolute -bottom-6 -right-6 bg-white rounded-2xl p-6 shadow-xl">
-              <div class="text-center">
-                <div id="hero-days" class="text-3xl font-bold text-gray-900 font-serif">0</div>
-                <div class="text-sm text-gray-600">Days of Love</div>
-              </div>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1a0f1f 0%, #2d1b3d 50%, #1f1529 100%);
+            color: #fff;
+            overflow-x: hidden;
+        }
+        
+        /* Landing Section */
+        .landing {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        
+        .landing h1 {
+            font-size: clamp(3rem, 8vw, 8rem);
+            font-weight: 200;
+            letter-spacing: -3px;
+            opacity: 0;
+            background: linear-gradient(45deg, #fff, #f8e8e5, #e74c89);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeIn 2s ease-out forwards;
+        }
+        
+        .scroll-hint {
+            position: absolute;
+            bottom: 40px;
+            font-size: 0.9rem;
+            color: #b794a8;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 3s forwards, bounce 2s ease-in-out 4s infinite;
+        }
+        
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+        
+        /* Timeline Section */
+        .timeline-section {
+            min-height: 300vh;
+            padding: 100px 0;
+            position: relative;
+        }
+        
+        .timeline-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            position: relative;
+        }
+        
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, #333, #333, transparent);
+            transform: translateX(-50%);
+        }
+        
+        .timeline-progress {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            width: 2px;
+            height: 0%;
+            background: linear-gradient(to bottom, #e74c89, #d63384, #6f42c1);
+            transform: translateX(-50%);
+            transition: height 0.3s ease;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin: 150px 0;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+        
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .timeline-item.highlight {
+            transform: scale(1.05) translateY(-10px);
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-right: 60%;
+            text-align: right;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: 60%;
+            text-align: left;
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 16px;
+            height: 16px;
+            background: #0a0a0a;
+            border: 3px solid #333;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.5s ease;
+            z-index: 2;
+        }
+        
+        .timeline-item.visible .timeline-dot {
+            border-color: #e74c89;
+            box-shadow: 0 0 20px rgba(231, 76, 137, 0.5);
+        }
+        
+        .timeline-item.highlight .timeline-dot {
+            width: 24px;
+            height: 24px;
+            border-color: #d63384;
+            box-shadow: 0 0 30px rgba(214, 51, 132, 0.8);
+        }
+        
+        .timeline-content {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(231, 76, 137, 0.15);
+            border-radius: 12px;
+            padding: 40px;
+            transition: all 0.5s ease;
+        }
+        
+        .timeline-item.highlight .timeline-content {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(214, 51, 132, 0.3);
+            box-shadow: 0 20px 60px rgba(214, 51, 132, 0.15);
+        }
+        
+        .timeline-date {
+            font-size: 0.9rem;
+            color: #888;
+            margin-bottom: 15px;
+            font-weight: 300;
+        }
+        
+        .timeline-title {
+            font-size: 1.8rem;
+            font-weight: 400;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+        
+        .timeline-description {
+            font-size: 1rem;
+            color: #e8d4e8;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+        
+        /* Envelope Section */
+        .envelope-section {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+        }
+        
+        .envelope {
+            position: relative;
+            width: 300px;
+            height: 200px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .envelope:hover:not(.open) {
+            transform: scale(1.05);
+        }
+        
+        .envelope-body {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #fef7f0, #f8e8e5);
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .envelope-flap {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #fff5f0, #f5e6e8);
+            clip-path: polygon(0 0, 100% 0, 50% 60%);
+            transform-origin: top center;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 2;
+        }
+        
+        .envelope.open .envelope-flap {
+            transform: rotateX(180deg);
+        }
+        
+        .envelope-seal {
+            position: absolute;
+            top: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(45deg, #d4af37, #f4d03f);
+            border-radius: 50%;
+            z-index: 3;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(212, 175, 55, 0.3);
+        }
+        
+        .envelope.open .envelope-seal {
+            opacity: 0;
+            transform: translateX(-50%) scale(0);
+        }
+        
+        .letter {
+            position: absolute;
+            top: 40px;
+            left: 20px;
+            right: 20px;
+            bottom: 20px;
+            background: linear-gradient(135deg, #fffef9, #fef7f0);
+            border-radius: 4px;
+            padding: 20px;
+            font-family: 'Georgia', serif;
+            font-size: 0.85rem;
+            color: #4a3c3c;
+            line-height: 1.6;
+            overflow: hidden;
+            transform: translateY(100%);
+            opacity: 0;
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 4;
+            pointer-events: none;
+            border: 1px solid rgba(214, 51, 132, 0.1);
+        }
+        
+        .envelope.open .letter {
+            transform: translateY(-180px);
+            opacity: 1;
+        }
+        
+        .letter.expanded {
+            position: fixed;
+            top: 10px;
+            left: 50%;
+            right: auto;
+            bottom: 10px;
+            width: 90vw;
+            max-width: 600px;
+            height: auto;
+            transform: translateX(-50%) !important;
+            z-index: 1000;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            font-size: 1rem;
+            padding: 40px;
+            border-radius: 8px;
+            pointer-events: all;
+            opacity: 1;
+        }
+        
+        .letter-header {
+            text-align: center;
+            margin-bottom: 20px;
+            font-style: italic;
+            color: #8b6f8b;
+        }
+        
+        .letter-content {
+            text-align: justify;
+        }
+        
+        .letter-signature {
+            text-align: right;
+            margin-top: 20px;
+            font-style: italic;
+        }
+        
+        .close-letter {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0, 0, 0, 0.1);
+            border: none;
+            font-size: 1.5rem;
+            color: #999;
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            z-index: 1001;
+            pointer-events: all;
+        }
+        
+        .close-letter:hover {
+            color: #666;
+            background: rgba(0, 0, 0, 0.2);
+        }
+        
+        .letter-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(26, 15, 31, 0.9);
+            backdrop-filter: blur(5px);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+        
+        .letter-backdrop.show {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: all;
+        }
+        
+        @media (max-width: 768px) {
+            .timeline-item:nth-child(odd) .timeline-content,
+            .timeline-item:nth-child(even) .timeline-content {
+                margin: 0 20px 0 60px;
+                text-align: left;
+            }
+            
+            .timeline-line,
+            .timeline-progress {
+                left: 40px;
+            }
+            
+            .timeline-dot {
+                left: 40px;
+            }
+            
+            .envelope {
+                width: 280px;
+                height: 180px;
+            }
+            
+            .letter {
+                font-size: 0.8rem;
+            }
+            
+            .letter.expanded {
+                width: 95vw;
+                top: 20px;
+                bottom: 20px;
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Landing Section -->
+    <section class="landing">
+        <h1>Happy Anniversary</h1>
+        <div class="scroll-hint">Scroll to explore our journey</div>
+    </section>
+    
+    <!-- Timeline Section -->
+    <section class="timeline-section">
+        <div class="timeline-container">
+            <div class="timeline-line"></div>
+            <div class="timeline-progress"></div>
+            
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">Day One</div>
+                    <div class="timeline-title">When We First Met</div>
+                    <div class="timeline-description">
+                        That moment when everything changed. A simple conversation that sparked something beautiful, even across the distance.
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Timeline Section -->
-  <section id="timeline" class="py-20 px-6">
-    <div class="max-w-4xl mx-auto">
-      <div class="text-center mb-16">
-        <h2 class="text-4xl font-serif font-bold text-gray-900 mb-4">Our Love Timeline</h2>
-        <div class="w-24 h-1 bg-rose-500 mx-auto"></div>
-      </div>
-      
-      <div class="space-y-12">
-        <div class="timeline-item flex items-start gap-8 group cursor-pointer" onclick="animateTimelineItem(this)">
-          <div class="flex-shrink-0">
-            <div class="w-4 h-4 bg-rose-500 rounded-full relative">
-              <div class="absolute inset-0 bg-rose-500 rounded-full animate-ping opacity-75"></div>
+            
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">First Month</div>
+                    <div class="timeline-title">Getting to Know Each Other</div>
+                    <div class="timeline-description">
+                        Hours of talking, sharing stories, dreams, and discovering how much we had in common. The foundation of something special.
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 flex-1 group-hover:scale-105">
-            <div class="flex flex-col md:flex-row md:items-center gap-4">
-              <div class="md:w-32 flex-shrink-0">
-                <span class="text-rose-500 font-bold text-lg">Aug 1, 2024</span>
-              </div>
-              <div class="flex-1">
-                <h3 class="text-xl font-semibold text-gray-900 mb-2">First Meeting ✨</h3>
-                <p class="text-gray-600">The day our paths crossed and everything changed. That first conversation felt like coming home.</p>
-              </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">Month Three</div>
+                    <div class="timeline-title">Falling Deeper</div>
+                    <div class="timeline-description">
+                        When we realized this wasn't just a friendship anymore. The butterflies, the anticipation of each message, the way you made everything brighter.
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-
-        <div class="timeline-item flex items-start gap-8 group cursor-pointer" onclick="animateTimelineItem(this)">
-          <div class="flex-shrink-0">
-            <div class="w-4 h-4 bg-rose-500 rounded-full"></div>
-          </div>
-          <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 flex-1 group-hover:scale-105">
-            <div class="flex flex-col md:flex-row md:items-center gap-4">
-              <div class="md:w-32 flex-shrink-0">
-                <span class="text-rose-500 font-bold text-lg">Aug 20, 2024</span>
-              </div>
-              <div class="flex-1">
-                <h3 class="text-xl font-semibold text-gray-900 mb-2">First "I Love You" 💕</h3>
-                <p class="text-gray-600">The words just spilled out naturally, and hearing you say them back made my heart soar.</p>
-              </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">Month Six</div>
+                    <div class="timeline-title">Halfway Through</div>
+                    <div class="timeline-description">
+                        Proving that distance is just a number. We found our rhythm, our ways of staying close, making it work against all odds.
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-
-        <div class="timeline-item flex items-start gap-8 group cursor-pointer" onclick="animateTimelineItem(this)">
-          <div class="flex-shrink-0">
-            <div class="w-4 h-4 bg-rose-500 rounded-full"></div>
-          </div>
-          <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 flex-1 group-hover:scale-105">
-            <div class="flex flex-col md:flex-row md:items-center gap-4">
-              <div class="md:w-32 flex-shrink-0">
-                <span class="text-rose-500 font-bold text-lg">Sep 22, 2024</span>
-              </div>
-              <div class="flex-1">
-                <h3 class="text-xl font-semibold text-gray-900 mb-2">Official Couple 🎉</h3>
-                <p class="text-gray-600">We made it official! From that day forward, we've been building something beautiful together.</p>
-              </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">Month Nine</div>
+                    <div class="timeline-title">Stronger Together</div>
+                    <div class="timeline-description">
+                        Through challenges and celebrations, we learned that what we have is real, strong, and worth every mile between us.
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-
-        <div class="timeline-item flex items-start gap-8 group cursor-pointer" onclick="animateTimelineItem(this)">
-          <div class="flex-shrink-0">
-            <div class="w-4 h-4 bg-rose-500 rounded-full animate-pulse-soft"></div>
-          </div>
-          <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 flex-1 group-hover:scale-105">
-            <div class="flex flex-col md:flex-row md:items-center gap-4">
-              <div class="md:w-32 flex-shrink-0">
-                <span class="text-rose-500 font-bold text-lg">Today</span>
-              </div>
-              <div class="flex-1">
-                <h3 class="text-xl font-semibold text-gray-900 mb-2">Still Growing Strong 🌱</h3>
-                <p class="text-gray-600">Every day with you is a new adventure. Our love keeps growing deeper and more beautiful.</p>
-              </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">Today</div>
+                    <div class="timeline-title">One Year Anniversary</div>
+                    <div class="timeline-description">
+                        Here we are, 365 days later. A year of love, growth, and building something beautiful together, one conversation at a time.
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Gallery Section -->
-  <section id="gallery" class="py-20 px-6 bg-gray-50">
-    <div class="max-w-6xl mx-auto">
-      <div class="text-center mb-16">
-        <h2 class="text-4xl font-serif font-bold text-gray-900 mb-4">Our Precious Memories</h2>
-        <div class="w-24 h-1 bg-rose-500 mx-auto"></div>
-      </div>
-      
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="gallery-item group cursor-pointer" onclick="openModal('galleryModal', 'Romantic Dinner')">
-          <div class="relative overflow-hidden rounded-2xl shadow-lg">
-            <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=400&h=300&fit=crop" 
-                 alt="Romantic dinner" 
-                 class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500">
-            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300"></div>
-            <div class="absolute bottom-4 left-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <h3 class="font-semibold">Romantic Dinner</h3>
-              <p class="text-sm">Our first date night</p>
+    </section>
+    
+    <!-- Envelope Section -->
+    <section class="envelope-section">
+        <div class="envelope" id="envelope">
+            <div class="envelope-body">
+                <div class="envelope-flap"></div>
+                <div class="envelope-seal"></div>
+                <div class="letter" id="letter">
+                    <button class="close-letter" id="closeButton">&times;</button>
+                    <div class="letter-header">A Letter for Jasm</div>
+                    <div class="letter-content">
+                        <p>My dearest Jasm,</p>
+                        
+                        <p>As I sit here writing this on our first anniversary, I can't help but smile thinking about how far we've come. A whole year ago, I never could have imagined that someone could mean so much to me, especially someone I've never been able to hold in my arms.</p>
+                        
+                        <p>But that's the thing about love, isn't it? It transcends physical boundaries. It lives in your voice during our late-night calls, in the way you make me laugh until my sides hurt, in those quiet moments when we just listen to each other breathe.</p>
+                        
+                        <p>This year has taught me that distance is just a number, but connection is everything. We've created something beautiful together - our own little world of inside jokes, conversations that stretch for hours, shared dreams, and those perfect moments of silence that say more than words ever could.</p>
+                        
+                        <p>I love how your voice is the first thing I want to hear in the morning and the last thing I need at night. I love how you remember every story I tell you, how you make ordinary days extraordinary just by being part of them. I love our traditions - the way we count down New Year's together from different time zones, how we plan what we'll cook for each other someday.</p>
+                        
+                        <p>You've shown me patience during my worst moments, kindness when I didn't deserve it, and a love that doesn't need to be proven every day because it simply is. You've made me believe that some things are worth waiting for, worth fighting for, worth every sleepless night missing you.</p>
+                        
+                        <p>I won't lie - this year has been hard. There were nights I cried because I couldn't hold you through your tough times, moments when the distance felt impossible, days when I questioned if we were crazy for trying. But every challenge has only proven that what we have is unbreakable.</p>
+                        
+                        <p>Looking ahead, I see everything we've talked about becoming real. I see our first apartment together, lazy Sunday mornings in bed, cooking dinner side by side instead of over video calls. I see meeting your family, you meeting mine, building a life that started with two hearts that refused to let distance win.</p>
+                        
+                        <p>Thank you for this incredible year, Jasm. Thank you for choosing us when it would have been easier to choose someone closer. Thank you for being my anchor, my home, my future.</p>
+                        
+                        <p>Here's to closing the distance, to building our forever, and to proving that real love really can conquer anything. I love you more than words, more than miles, more than I ever thought possible.</p>
+                    </div>
+                    <div class="letter-signature">
+                        All my love,<br>
+                        Always yours
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-
-        <div class="gallery-item group cursor-pointer" onclick="openModal('galleryModal', 'Coffee Together')">
-          <div class="relative overflow-hidden rounded-2xl shadow-lg">
-            <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?w=400&h=300&fit=crop" 
-                 alt="Coffee date" 
-                 class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500">
-            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300"></div>
-            <div class="absolute bottom-4 left-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <h3 class="font-semibold">Coffee Together</h3>
-              <p class="text-sm">Morning conversations</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="gallery-item group cursor-pointer" onclick="openModal('galleryModal', 'Beach Walk')">
-          <div class="relative overflow-hidden rounded-2xl shadow-lg">
-            <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=400&h=300&fit=crop" 
-                 alt="Beach walk" 
-                 class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500">
-            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300"></div>
-            <div class="absolute bottom-4 left-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <h3 class="font-semibold">Beach Walk</h3>
-              <p class="text-sm">Sunset strolls</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="gallery-item group cursor-pointer" onclick="openModal('galleryModal', 'Cozy Moments')">
-          <div class="relative overflow-hidden rounded-2xl shadow-lg">
-            <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=400&h=300&fit=crop" 
-                 alt="Cozy moments" 
-                 class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500">
-            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300"></div>
-            <div class="absolute bottom-4 left-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <h3 class="font-semibold">Cozy Moments</h3>
-              <p class="text-sm">Home together</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="gallery-item group cursor-pointer" onclick="openModal('galleryModal', 'Adventure Time')">
-          <div class="relative overflow-hidden rounded-2xl shadow-lg">
-            <img src="https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?w=400&h=300&fit=crop" 
-                 alt="Adventure" 
-                 class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500">
-            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300"></div>
-            <div class="absolute bottom-4 left-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <h3 class="font-semibold">Adventure Time</h3>
-              <p class="text-sm">Exploring together</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="gallery-item group cursor-pointer" onclick="openModal('galleryModal', 'Celebration')">
-          <div class="relative overflow-hidden rounded-2xl shadow-lg">
-            <img src="https://images.unsplash.com/photo-1464207687429-7505649dae38?w=400&h=300&fit=crop" 
-                 alt="Celebration" 
-                 class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500">
-            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300"></div>
-            <div class="absolute bottom-4 left-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <h3 class="font-semibold">Celebration</h3>
-              <p class="text-sm">Special moments</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Love Letters Section -->
-  <section id="letters" class="py-20 px-6">
-    <div class="max-w-6xl mx-auto">
-      <div class="text-center mb-16">
-        <h2 class="text-4xl font-serif font-bold text-gray-900 mb-4">Letters From My Heart</h2>
-        <div class="w-24 h-1 bg-rose-500 mx-auto"></div>
-      </div>
-      
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="letter-card bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer group hover:scale-105" onclick="openModal('letterModal1')">
-          <div class="mb-4">
-            <div class="w-12 h-12 bg-rose-100 rounded-full flex items-center justify-center mb-4">
-              <i class="fas fa-heart text-rose-500 text-xl"></i>
-            </div>
-            <h3 class="text-xl font-semibold text-gray-900 mb-2">To My Beautiful Lynn</h3>
-            <p class="text-sm text-rose-500 mb-4">August 15, 2024</p>
-          </div>
-          <p class="text-gray-600 leading-relaxed">Every morning I wake up grateful that the universe brought you into my life. Your smile lights up my darkest days...</p>
-        </div>
-
-        <div class="letter-card bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer group hover:scale-105" onclick="openModal('letterModal2')">
-          <div class="mb-4">
-            <div class="w-12 h-12 bg-rose-100 rounded-full flex items-center justify-center mb-4">
-              <i class="fas fa-star text-rose-500 text-xl"></i>
-            </div>
-            <h3 class="text-xl font-semibold text-gray-900 mb-2">My Dearest Love</h3>
-            <p class="text-sm text-rose-500 mb-4">September 1, 2024</p>
-          </div>
-          <p class="text-gray-600 leading-relaxed">You've shown me what it means to love someone completely. Every moment with you feels like a beautiful dream...</p>
-        </div>
-
-        <div class="letter-card bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer group hover:scale-105" onclick="openModal('letterModal3')">
-          <div class="mb-4">
-            <div class="w-12 h-12 bg-rose-100 rounded-full flex items-center justify-center mb-4">
-              <i class="fas fa-infinity text-rose-500 text-xl"></i>
-            </div>
-            <h3 class="text-xl font-semibold text-gray-900 mb-2">Forever Yours</h3>
-            <p class="text-sm text-rose-500 mb-4">September 22, 2024</p>
-          </div>
-          <p class="text-gray-600 leading-relaxed">Today we made it official, but my heart has been yours since the moment we met. Here's to our beautiful future...</p>
-        </div>
-
-        <div class="letter-card bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer group hover:scale-105" onclick="openModal('letterModal4')">
-          <div class="mb-4">
-            <div class="w-12 h-12 bg-rose-100 rounded-full flex items-center justify-center mb-4">
-              <i class="fas fa-gem text-rose-500 text-xl"></i>
-            </div>
-            <h3 class="text-xl font-semibold text-gray-900 mb-2">My Soulmate</h3>
-            <p class="text-sm text-rose-500 mb-4">October 10, 2024</p>
-          </div>
-          <p class="text-gray-600 leading-relaxed">I never believed in soulmates until I met you. You complete me in ways I never knew I needed completing...</p>
-        </div>
-
-        <div class="letter-card bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer group hover:scale-105" onclick="openModal('letterModal5')">
-          <div class="mb-4">
-            <div class="w-12 h-12 bg-rose-100 rounded-full flex items-center justify-center mb-4">
-              <i class="fas fa-crown text-rose-500 text-xl"></i>
-            </div>
-            <h3 class="text-xl font-semibold text-gray-900 mb-2">My Everything</h3>
-            <p class="text-sm text-rose-500 mb-4">November 5, 2024</p>
-          </div>
-          <p class="text-gray-600 leading-relaxed">You are my sunshine on cloudy days, my anchor in stormy seas, my home wherever we are in the world...</p>
-        </div>
-
-        <div class="letter-card bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer group hover:scale-105" onclick="openModal('letterModal6')">
-          <div class="mb-4">
-            <div class="w-12 h-12 bg-rose-100 rounded-full flex items-center justify-center mb-4">
-              <i class="fas fa-rocket text-rose-500 text-xl"></i>
-            </div>
-            <h3 class="text-xl font-semibold text-gray-900 mb-2">My Future</h3>
-            <p class="text-sm text-rose-500 mb-4">December 1, 2024</p>
-          </div>
-          <p class="text-gray-600 leading-relaxed">When I think about the future, all I see is you. Growing old together, creating memories, building our dreams...</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Gallery Modal -->
-  <div id="galleryModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden items-center justify-center p-6">
-    <div class="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-      <div class="p-8">
-        <div class="flex justify-between items-center mb-6">
-          <h3 id="galleryModalTitle" class="text-2xl font-serif font-bold text-gray-900">Memory</h3>
-          <button onclick="closeModal('galleryModal')" class="w-10 h-10 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center transition-colors duration-200">
-            <i class="fas fa-times text-gray-600"></i>
-          </button>
-        </div>
-        <div class="space-y-4 text-gray-600 leading-relaxed">
-          <p>This beautiful memory captures a special moment in our journey together. Every photo tells a story of our love growing stronger with each passing day.</p>
-          <p>These moments remind me why I fell in love with you and why I continue to fall deeper every single day.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Letter Modals -->
-  <div id="letterModal1" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden items-center justify-center p-6">
-    <div class="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-      <div class="p-8">
-        <div class="flex justify-between items-center mb-6">
-          <h3 class="text-2xl font-serif font-bold text-gray-900">To My Beautiful Lynn</h3>
-          <button onclick="closeModal('letterModal1')" class="w-10 h-10 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center transition-colors duration-200">
-            <i class="fas fa-times text-gray-600"></i>
-          </button>
-        </div>
-        <div class="space-y-4 text-gray-600 leading-relaxed">
-          <p>My Beautiful Lynn,</p>
-          <p>Every morning I wake up grateful that the universe brought you into my life. Your smile lights up my darkest days, and your laugh is the most beautiful sound I've ever heard.</p>
-          <p>You have this incredible way of making everything better just by being you. When I'm with you, the world feels right, like all the pieces of my life have finally fallen into place.</p>
-          <p>Thank you for being patient with me, for loving me through my flaws, and for showing me what true love really looks like.</p>
-          <div class="text-right mt-8 font-serif text-rose-500 text-lg">Forever yours, Jasm 💕</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div id="letterModal2" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden items-center justify-center p-6">
-    <div class="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-      <div class="p-8">
-        <div class="flex justify-between items-center mb-6">
-          <h3 class="text-2xl font-serif font-bold text-gray-900">My Dearest Love</h3>
-          <button onclick="closeModal('letterModal2')" class="w-10 h-10 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center transition-colors duration-200">
-            <i class="fas fa-times text-gray-600"></i>
-          </button>
-        </div>
-        <div class="space-y-4 text-gray-600 leading-relaxed">
-          <p>My Dearest Love,</p>
-          <p>You've shown me what it means to love someone completely. Every moment with you feels like a beautiful dream that I never want to wake up from.</p>
-          <p>Your kindness, your strength, your beautiful heart - everything about you amazes me. You make me want to be a better person, not because you ask me to, but because you inspire me to be.</p>
-          <p>I love the way you see the world, the way you care for others, and most of all, the way you love me with your whole heart.</p>
-          <div class="text-right mt-8 font-serif text-rose-500 text-lg">All my love, Jasm ✨</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div id="letterModal3" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden items-center justify-center p-6">
-    <div class="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-      <div class="p-8">
-        <div class="flex justify-between items-center mb-6">
-          <h3 class="text-2xl font-serif font-bold text-gray-900">Forever Yours</h3>
-          <button onclick="closeModal('letterModal3')" class="w-10 h-10 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center transition-colors duration-200">
-            <i class="fas fa-times text-gray-600"></i>
-          </button>
-        </div>
-        <div class="space-y-4 text-gray-600 leading-relaxed">
-          <p>My Forever Love,</p>
-          <p>Today we made it official, but my heart has been yours since the moment we met. Here's to our beautiful future together, filled with love, laughter, and endless adventures.</p>
-          <p>I promise to love you through every season of life, to support your dreams, to be your safe haven when the world gets tough, and to never stop showing you how much you mean to me.</p>
-          <p>You are my today, my tomorrow, and all my tomorrows after that.</p>
-          <div class="text-right mt-8 font-serif text-rose-500 text-lg">Forever yours, Jasm 💖</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div id="letterModal4" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden items-center justify-center p-6">
-    <div class="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-      <div class="p-8">
-        <div class="flex justify-between items-center mb-6">
-          <h3 class="text-2xl font-serif font-bold text-gray-900">My Soulmate</h3>
-          <button onclick="closeModal('letterModal4')" class="w-10 h-10 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center transition-colors duration-200">
-            <i class="fas fa-times text-gray-600"></i>
-          </button>
-        </div>
-        <div class="space-y-4 text-gray-600 leading-relaxed">
-          <p>My Beautiful Soulmate,</p>
-          <p>I never believed in soulmates until I met you. You complete me in ways I never knew I needed completing. It's like you were made for me, and I was made for you.</p>
-          <p>We fit together so perfectly - your strengths complement my weaknesses, your dreams align with mine, and your heart beats in rhythm with mine.</p>
-          <p>Thank you for being my person, my partner, my best friend, and my greatest love.</p>
-          <div class="text-right mt-8 font-serif text-rose-500 text-lg">Your soulmate, Jasm 🌟</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div id="letterModal5" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden items-center justify-center p-6">
-    <div class="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-      <div class="p-8">
-        <div class="flex justify-between items-center mb-6">
-          <h3 class="text-2xl font-serif font-bold text-gray-900">My Everything</h3>
-          <button onclick="closeModal('letterModal5')" class="w-10 h-10 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center transition-colors duration-200">
-            <i class="fas fa-times text-gray-600"></i>
-          </button>
-        </div>
-        <div class="space-y-4 text-gray-600 leading-relaxed">
-          <p>My Everything,</p>
-          <p>You are my sunshine on cloudy days, my anchor in stormy seas, my home wherever we are in the world. You've become such an essential part of who I am that I can't imagine life without you.</p>
-          <p>Every day with you is a gift. Every smile, every laugh, every quiet moment together - they all mean the world to me.</p>
-          <p>You've taught me that love isn't just about the big gestures, but about the little moments that make life beautiful.</p>
-          <div class="text-right mt-8 font-serif text-rose-500 text-lg">With all my heart, Jasm 💝</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div id="letterModal6" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden items-center justify-center p-6">
-    <div class="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-      <div class="p-8">
-        <div class="flex justify-between items-center mb-6">
-          <h3 class="text-2xl font-serif font-bold text-gray-900">My Future</h3>
-          <button onclick="closeModal('letterModal6')" class="w-10 h-10 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center transition-colors duration-200">
-            <i class="fas fa-times text-gray-600"></i>
-          </button>
-        </div>
-        <div class="space-y-4 text-gray-600 leading-relaxed">
-          <p>My Beautiful Future,</p>
-          <p>When I think about the future, all I see is you. Growing old together, creating memories, building our dreams side by side. The thought of spending my life with you fills me with so much joy and excitement.</p>
-          <p>I can't wait to experience all of life's adventures with you - the big milestones and the quiet everyday moments that make a life together so special.</p>
-          <p>Whatever the future holds, I know it will be beautiful because you'll be there with me.</p>
-          <div class="text-right mt-8 font-serif text-rose-500 text-lg">Dreaming with you, Jasm 🚀</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <audio id="backgroundMusic" loop>
-    <source src="your-song.mp3" type="audio/mpeg">
-  </audio>
-
-<script>
-// Calculate days together
-function calculateDays() {
-  const startDate = new Date('2024-08-01');
-  const today = new Date();
-  const diffTime = Math.abs(today - startDate);
-  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-  
-  document.getElementById('days-counter').textContent = diffDays;
-  document.getElementById('hero-days').textContent = diffDays;
-}
-
-// Scroll progress
-window.addEventListener('scroll', () => {
-  const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-  document.getElementById('progress-bar').style.width = scrolled + '%';
-});
-
-
-
-// Music player
-const musicPlayer = document.getElementById('music-player');
-const playIcon = document.getElementById('play-icon');
-const backgroundMusic = document.getElementById('backgroundMusic');
-let isPlaying = false;
-
-musicPlayer.addEventListener('click', () => {
-  if (isPlaying) {
-    backgroundMusic.pause();
-    playIcon.className = 'fas fa-play text-rose-500 text-lg';
-  } else {
-    backgroundMusic.play().catch(e => {
-      console.log('Audio play failed:', e);
-    });
-    playIcon.className = 'fas fa-pause text-rose-500 text-lg';
-  }
-  isPlaying = !isPlaying;
-});
-
-// Smooth scrolling
-function scrollToSection(sectionId) {
-  document.getElementById(sectionId).scrollIntoView({
-    behavior: 'smooth'
-  });
-}
-
-// Timeline animation
-function animateTimelineItem(item) {
-  item.style.transform = 'scale(1.08)';
-  setTimeout(() => {
-    item.style.transform = 'scale(1.05)';
-  }, 200);
-}
-
-// Modal functions
-function openModal(modalId, title) {
-  const modal = document.getElementById(modalId);
-  if (title && modalId === 'galleryModal') {
-    document.getElementById('galleryModalTitle').textContent = title;
-  }
-  modal.classList.remove('hidden');
-  modal.classList.add('flex');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeModal(modalId) {
-  const modal = document.getElementById(modalId);
-  modal.classList.add('hidden');
-  modal.classList.remove('flex');
-  document.body.style.overflow = 'auto';
-}
-
-// Close modal when clicking outside
-document.querySelectorAll('[id$="Modal"]').forEach(modal => {
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) {
-      closeModal(modal.id);
-    }
-  });
-});
-
-// Keyboard navigation
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') {
-    document.querySelectorAll('[id$="Modal"]').forEach(modal => {
-      if (!modal.classList.contains('hidden')) {
-        closeModal(modal.id);
-      }
-    });
-  }
-});
-
-// Initialize
-document.addEventListener('DOMContentLoaded', () => {
-  calculateDays();
-  setInterval(calculateDays, 24 * 60 * 60 * 1000);
-});
-</script>
-
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96d6401cd5240360',t:'MTc1NDg5OTc2My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+        <div class="letter-backdrop" id="letterBackdrop"></div>
+    </section>
+    
+    <script>
+        // Smooth scroll progress tracking
+        function updateTimelineProgress() {
+            const timelineSection = document.querySelector('.timeline-section');
+            const progressBar = document.querySelector('.timeline-progress');
+            const items = document.querySelectorAll('.timeline-item');
+            
+            const sectionTop = timelineSection.offsetTop;
+            const sectionHeight = timelineSection.offsetHeight;
+            const windowHeight = window.innerHeight;
+            const scrollTop = window.scrollY;
+            
+            // Calculate progress through timeline section
+            const sectionProgress = Math.max(0, Math.min(1, 
+                (scrollTop - sectionTop + windowHeight * 0.5) / (sectionHeight - windowHeight * 0.5)
+            ));
+            
+            progressBar.style.height = (sectionProgress * 100) + '%';
+            
+            // Show timeline items based on scroll
+            items.forEach((item, index) => {
+                const itemTop = item.offsetTop;
+                const itemProgress = (scrollTop - sectionTop - itemTop + windowHeight * 0.8) / windowHeight;
+                
+                if (itemProgress > 0) {
+                    item.classList.add('visible');
+                }
+                
+                // Highlight effect for items in viewport
+                if (itemProgress > 0.2 && itemProgress < 0.8) {
+                    item.classList.add('highlight');
+                } else {
+                    item.classList.remove('highlight');
+                }
+            });
+        }
+        
+        // Envelope functionality
+        function toggleEnvelope() {
+            const envelope = document.getElementById('envelope');
+            const letter = document.getElementById('letter');
+            const backdrop = document.getElementById('letterBackdrop');
+            
+            if (!envelope.classList.contains('open')) {
+                // Open envelope
+                envelope.classList.add('open');
+                
+                // After letter slides out, expand it
+                setTimeout(() => {
+                    letter.classList.add('expanded');
+                    backdrop.classList.add('show');
+                    document.body.style.overflow = 'hidden';
+                }, 800);
+            }
+        }
+        
+        function closeLetter() {
+            const envelope = document.getElementById('envelope');
+            const letter = document.getElementById('letter');
+            const backdrop = document.getElementById('letterBackdrop');
+            
+            // Close expanded letter
+            letter.classList.remove('expanded');
+            backdrop.classList.remove('show');
+            document.body.style.overflow = 'auto';
+            
+            // After animation, close envelope
+            setTimeout(() => {
+                envelope.classList.remove('open');
+            }, 300);
+        }
+        
+        // Event listeners
+        window.addEventListener('scroll', updateTimelineProgress);
+        document.getElementById('envelope').addEventListener('click', toggleEnvelope);
+        document.getElementById('closeButton').addEventListener('click', function(e) {
+            e.stopPropagation();
+            closeLetter();
+        });
+        document.getElementById('letterBackdrop').addEventListener('click', closeLetter);
+        
+        // Initial call
+        updateTimelineProgress();
+    </script>
+</body>
 </html>
